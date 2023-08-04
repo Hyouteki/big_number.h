@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <random>
 using namespace std;
 
 class big_number
@@ -62,10 +63,11 @@ public:
 	friend istream &operator>>(istream &, big_number &);
 
 	// miscellaneous methods
-	friend big_number &pow(big_number &, big_number &);
+	friend big_number &power(big_number &, int);
 	friend big_number &sqrt(big_number &);
 	friend big_number &multiply_modulus(big_number &, big_number &, big_number &);
-	friend big_number &power_modulus(big_number &, big_number &, big_number &);
+	friend big_number &power_modulus(big_number &, int, big_number &);
+	friend big_number &get_random_number(int);
 
 	// operator overloading for modulus
 	friend big_number &operator%=(big_number &, const big_number &);
@@ -431,13 +433,13 @@ ostream &operator<<(ostream &out, const big_number &num)
 	return cout;
 }
 
-big_number &pow(big_number &num1, big_number &num2)
+big_number &power(big_number &num1, int exponent)
 {
-	big_number base(num1), exponent(num2);
+	big_number base(num1);
 	big_number *res = new big_number(1);
-	while (!exponent.is_null())
+	while (exponent)
 	{
-		if (exponent.last_digit() & 1)
+		if (exponent & 1)
 			*res *= base;
 		base *= base;
 		exponent /= 2;
@@ -495,18 +497,17 @@ big_number &multiply_modulus(big_number &num1, big_number &num2, big_number &mod
 	return *res;
 }
 
-big_number &power_modulus(big_number &base, big_number &exponent, big_number &mod)
+big_number &power_modulus(big_number &base, int exponent, big_number &mod)
 {
 	base %= mod;
-	if (exponent.is_null())
+	if (exponent == 0)
 		return *(new big_number(1));
 	big_number tmp, *dump = new big_number();
 	big_number trash;
-	trash = exponent / 2;
-	tmp = power_modulus(base, trash, mod);
+	tmp = power_modulus(base, exponent / 2, mod);
 	*dump = multiply_modulus(tmp, tmp, mod);
 	// odd exponent
-	if (exponent.last_digit() & 1)
+	if (exponent & 1)
 	{
 		*dump = multiply_modulus(base, *dump, mod);
 		*dump %= mod;
@@ -516,6 +517,27 @@ big_number &power_modulus(big_number &base, big_number &exponent, big_number &mo
 	{
 		return *dump;
 	}
+}
+
+big_number &get_random_number(int bit_size)
+{
+	random_device seed;
+	mt19937 engine(seed());
+	uniform_int_distribution<int> distribution(0, 1);
+	big_number *num = new big_number(1); // to make the number odd
+	for (int i = 1; i < bit_size - 1; ++i)
+	{
+		if (distribution(engine))
+		{
+			big_number tmp(2);
+			tmp = power(tmp, i);
+			*num += tmp;
+		}
+	}
+	big_number tmp(2);
+	tmp = power(tmp, bit_size - 1);
+	*num += tmp; // to make the most significant bit high
+	return *num;
 }
 
 big_number &operator%=(big_number &num1, const big_number &num2)

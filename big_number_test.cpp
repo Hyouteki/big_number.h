@@ -31,7 +31,7 @@ int main()
 	cout << "num1 :: " << num1 << endl;
 	cout << "num2 :: " << num2 << endl;
 	cout << "num3 :: " << num3 << endl;
-	cout << "pow :: " << pow(num1, num2) << endl;
+	cout << "pow :: " << power(num1, n2) << endl;
 	cout << "num1 :: " << num1 << endl;
 	cout << "num2 :: " << num2 << endl;
 	cout << "num3 :: " << num3 << endl;
@@ -43,7 +43,7 @@ int main()
 	cout << "num1 :: " << num1 << endl;
 	cout << "num2 :: " << num2 << endl;
 	cout << "num3 :: " << num3 << endl;
-	cout << "powmod :: " << power_modulus(num1, num2, num3) << endl;
+	cout << "powmod :: " << power_modulus(num1, n2, num3) << endl;
 	cout << "num1 :: " << num1 << endl;
 	cout << "num2 :: " << num2 << endl;
 	cout << "num3 :: " << num3 << endl;
