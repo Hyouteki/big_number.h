@@ -66,7 +66,7 @@ public:
 	friend big_number &power(big_number &, int);
 	friend big_number &sqrt(big_number &);
 	friend big_number &multiply_modulus(big_number &, big_number &, big_number &);
-	friend big_number &power_modulus(big_number &, int, big_number &);
+	friend big_number &power_modulus(big_number &, big_number &, big_number &);
 	friend big_number &get_random_number(int);
 
 	// operator overloading for modulus
@@ -497,17 +497,18 @@ big_number &multiply_modulus(big_number &num1, big_number &num2, big_number &mod
 	return *res;
 }
 
-big_number &power_modulus(big_number &base, int exponent, big_number &mod)
+big_number &power_modulus(big_number &base, big_number &exponent, big_number &mod)
 {
 	base %= mod;
 	if (exponent == 0)
 		return *(new big_number(1));
 	big_number tmp, *dump = new big_number();
 	big_number trash;
-	tmp = power_modulus(base, exponent / 2, mod);
+	trash = exponent/2;
+	tmp = power_modulus(base, trash, mod);
 	*dump = multiply_modulus(tmp, tmp, mod);
 	// odd exponent
-	if (exponent & 1)
+	if (exponent.last_digit() & 1)
 	{
 		*dump = multiply_modulus(base, *dump, mod);
 		*dump %= mod;
