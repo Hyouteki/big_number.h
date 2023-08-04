@@ -25,5 +25,13 @@ int main()
 	cout << "num1 :: " << num1 << endl;
 	cout << "num2 :: " << num2 << endl;
 	cout << "num3 :: " << num3 << endl;
+	cout << "gcd :: " << gcd(num1, num2) << endl;
+	cout << "num1 :: " << num1 << endl;
+	cout << "num2 :: " << num2 << endl;
+	cout << "num3 :: " << num3 << endl;
+	cout << "min :: " << min(num1, num2) << endl;
+	cout << "num1 :: " << num1 << endl;
+	cout << "num2 :: " << num2 << endl;
+	cout << "num3 :: " << num3 << endl;
 	return 0;
 }
