@@ -2,7 +2,7 @@
 A C++ header file for big_number calculations. Useful in cryptography, big_number methods such as factorial, Fibonacci, etc.<br>
 **big_number**: A dynamically allocated object/number that does not have a fixed size keeps getting bigger as the number gets bigger, similar to how it works in Python.
 
-### Deployment
+# Deployment
 - Copy the header file `big_number.h` to your working directory.
 - Use `#include "big_number.h"` to include the file to your code file.
 
@@ -58,5 +58,5 @@ A C++ header file for big_number calculations. Useful in cryptography, big_numbe
   multiply_modulus(num1, num2, mod); // equivalent to (num1*num2)%mod;
   power_modulus(base, exponent, mod); // equivalent to pow(base, exponent)%mod;
   ```
-  ### References
+  # References
   - https://www.geeksforgeeks.org/bigint-big-integers-in-c-with-example/
