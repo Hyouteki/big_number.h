@@ -56,8 +56,7 @@ A C++ header file for big_number calculations. Useful in cryptography, big_numbe
   power(num1, exponent); // num1 is big_number, exponent is int
   sqrt(num1);
   multiply_modulus(num1, num2, mod); // equivalent to (num1*num2)%mod;
-  power_modulus(num1, exponent, mod); // equivalent to pow(base, exponent)%mod;
-  // num1 and mod are big_number, exponent is int
+  power_modulus(num1, exponent, mod); // equivalent to pow(base, exponent)%mod; all are big_numbers
   ```
   # References
   - https://www.geeksforgeeks.org/bigint-big-integers-in-c-with-example/
