@@ -1,5 +1,5 @@
 # big_number
-A C++ header file for big_number calculations. Useful in cryptography, big_number methods such as factorial, Fibonacci, etc.<br>
+A C++ library for big_number calculations. Useful in cryptography, big_number methods such as factorial, Fibonacci, etc.<br>
 **big_number**: A dynamically allocated object/number that does not have a fixed size keeps getting bigger as the number gets bigger, similar to how it works in Python.
 
 ## Deployment
